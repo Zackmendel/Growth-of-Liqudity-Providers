@@ -28,9 +28,30 @@ def test():
   """, unsafe_allow_html=True)
 
 
-  tab1, tab2 = st.tabs(["All-Time Data", "Past Month Data"])
 
-  with tab1:
+  st.header("INTRODUCTION")
+  st.markdown("""
+
+In the ever-evolving landscape of decentralized finance (DeFi), Uniswap stands as a pioneer—a beacon of accessibility and innovation that swiftly claimed its throne as the leading Decentralized Exchange (DEX). It all began with a simple yet revolutionary concept: empower both traders and liquidity providers to shape the future of DeFi.
+
+The effectiveness of Uniswap hinges upon a delicate balance, a dance between two equally vital protagonists: the traders executing swaps and the liquidity providers who facilitate these trades. It's a symbiotic relationship that, if disrupted, could send ripples through the DeFi ecosystem.
+
+Imagine a world where liquidity providers vanish; where traders navigate turbulent price seas with no respite in sight. The result? Steep price impacts, a storm of uncertainty, and the traders, the lifeblood of this ecosystem, left gasping for air.
+
+On the flip side, a world without traders would render liquidity providers adrift in stagnant pools, their capital adrift in the vast DeFi sea. The magic of DeFi, where capital begets capital, would be lost, and liquidity providers would face a bleak return on investment.
+
+That's why we've embarked on a journey, a deep dive into the very heart of Uniswap's liquidity providers. We seek to understand who they are, what drives them, and what keeps this DeFi engine running. Through this analytical dashboard, we shall illuminate the enigmatic world of liquidity providers, explore the dominance of the giants and the resilience of the smaller fish, and unveil the intricate dance of liquidity in the Uniswap ocean.
+
+As we journey through this realm, we'll unravel the mysteries of liquidity provider activity and its relation to the size of liquidity provided. We'll examine the consequences of a large liquidity provider leaving a small pool, seeking to discover if others rush to fill the void.
+
+And, as the DeFi space expands, we'll venture into uncharted territories, comparing Ethereum's L1 and the emerging Layer 2 solutions, in pursuit of insights into the shifting tides of liquidity.
+
+This dashboard is not just an analysis; it's a testament to the power of data, a tool to better understand the guardians of liquidity. We invite you to explore, learn, and share, for the strength of DeFi lies in its community. Join us as we navigate the ever-fascinating world of Uniswap liquidity providers.""")
+
+
+  tab1, tab2 = st.tabs(["Past Month Data",   "All-Time Data"])
+
+  with tab2:
     st.header("All Time Trading Stats on Uniswap")
     col_1, col_2, col_3, col_4 = st.columns(4, gap='large')
     url_0 = "https://api.flipsidecrypto.com/api/v2/queries/24f569be-2967-477a-aec5-153652ba2d56/data/latest"
@@ -84,7 +105,7 @@ def test():
       fig_2b.update_layout(hovermode="x unified")
       st.plotly_chart(fig_2b, use_container_width=True)
 
-  with tab2:
+  with tab1:
     st.header("Past Month Trading Stats on Uniswap")
     col_1, col_2, col_3 = st.columns(3, gap='large')
     url_0 = "https://api.flipsidecrypto.com/api/v2/queries/049c7e47-b730-44aa-9ee3-1dfd70550950/data/latest"
@@ -132,3 +153,15 @@ def test():
       fig_2b = px.bar(df_2, x="TIMESPAN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Daily Swappers Count(Past Month)", height=400)
       fig_2b.update_layout(hovermode="x unified")
       st.plotly_chart(fig_2b, use_container_width=True)
+
+
+  st.markdown("""
+  ### FINDINGS
+- It was discovered that an impressive sum of 19billion USD has been traded on Uniswap in the past 30 days. A total of approximately 8million transactions with over 1million users interacting with the Uniswap contract in the past Month is an impressive feat to say the least.
+
+- It was also discovered that Ethereum is leading chain in terms of all the presented metrics in both daily and total metrics in the past 30 days with a great margin showing how strong the L1 still is over time in terms of attracting users to engage with the Uniswap contract.
+
+- It was also discovered that a similar trend was seen when observing the all time data presented in the next tab.
+
+- Continue with us as we dig deeper into the analysis by delving into the Liquidity providers activities on Ethereum (more emphasis here) and on Ethereum vs other L2s. To the next tab ➡️
+  """)
