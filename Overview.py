@@ -161,7 +161,7 @@ This dashboard is not just an analysis; it's a testament to the power of data, a
 
 
   st.markdown("""
-  ### FINDINGS
+  ### FINDINGS🔎
 - It was discovered that an impressive sum of 19billion USD has been traded on Uniswap in the past 30 days. A total of approximately 8million transactions with over 1million users interacting with the Uniswap contract in the past Month is an impressive feat to say the least.
 
 - It was also discovered that Ethereum is leading chain in terms of all the presented metrics in both daily and total metrics in the past 30 days with a great margin showing how strong the L1 still is over time in terms of attracting users to engage with the Uniswap contract.
