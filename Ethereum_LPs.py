@@ -282,7 +282,10 @@ We are hoping that at the end of this analysis more insights into the behavior o
     fig_9a.update_traces(textposition='inside', textinfo='percent+label')
     st.plotly_chart(fig_9a, use_container_width=True)
 
-  st.write(":blue[Based on ETH balance], it is discovered that a good amount of LPs are shrimps (<1ETH balance). A good number of whales were also recorded that made about 8.6% of the total LPs.")
+  st.markdown("""
+  ### FINDINGS🔎
+  :blue[Based on ETH balance], it is discovered that a good amount of LPs are shrimps (<1ETH balance). A good number of whales were also recorded that made about 8.6% of the total LPs.
+  """)
 
   st.subheader("Distribution of LPs by Their Active Months")
 
@@ -293,6 +296,7 @@ We are hoping that at the end of this analysis more insights into the behavior o
   st.plotly_chart(fig_10, use_container_width=True)
 
   st.markdown("""
+  ### FINDINGS🔎
   :blue[By their active months] measures the difference between LP's last liquidity provided and current date.
   
   A noticed trend is that inactivity increases with time with most LPs inactive for more than two years now.
@@ -318,7 +322,10 @@ We are hoping that at the end of this analysis more insights into the behavior o
     fig_12a.update_layout(hovermode="x unified")
     st.plotly_chart(fig_12a, use_container_width=True)
   
-  st.markdown(":blue[This section tracks the interest of LPs in Uniswap governance process] and is it can be clearly deduced by the small number of LPs that does not hold the Uniswap native UNI token and the number of LPs that have not participated actively in Uniswap governance that LPs a rarely interested in the governance of Uniswap.")
+  st.markdown("""
+  ### FINDINGS🔎
+  :blue[This section tracks the interest of LPs in Uniswap governance process] and is it can be clearly deduced by the small number of LPs that does not hold the Uniswap native UNI token and the number of LPs that have not participated actively in Uniswap governance that LPs a rarely interested in the governance of Uniswap.
+  """)
   
   
   
@@ -344,6 +351,7 @@ We are hoping that at the end of this analysis more insights into the behavior o
     st.plotly_chart(fig_11a, use_container_width=True)
   
   st.markdown("""
+  ### FINDINGS🔎
   - By pool balance, Liquidity pools with balance >=1000000 is considered large, balance < 1000000 and > 100000 is considered medium and balance < 100000 are considered small pools.
   
   - A very large number of pools fell in the Medium size category, followed by Small size pools and with a very minute 3.3% falling into the Large pools category.
@@ -379,6 +387,7 @@ We are hoping that at the end of this analysis more insights into the behavior o
     st.plotly_chart(fig_13a, use_container_width=True)
   
   st.markdown("""
+  ### FINDINGS🔎
   - September can be seen to ve the most active month all time for Liquidity providers of Uniswap on Ethereum. Tuesday - Thursday are also seen to be the most active days in that month of September.
   
   - Liquidity providers are more active during the late hours and very early hours of the day 
