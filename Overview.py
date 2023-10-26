@@ -48,6 +48,11 @@ And, as the DeFi space expands, we'll venture into uncharted territories, compar
 
 This dashboard is not just an analysis; it's a testament to the power of data, a tool to better understand the guardians of liquidity. We invite you to explore, learn, and share, for the strength of DeFi lies in its community. Join us as we navigate the ever-fascinating world of Uniswap liquidity providers.""")
 
+  st.markdown("""
+  #### For a more detailed analysis, data for the past month only and all time are presented to help readers explore thier options better.
+  ### Charts presented in this section are set to :red[refresh daily.]
+  """)
+
 
   tab1, tab2 = st.tabs(["Past Month Data",   "All-Time Data"])
 
