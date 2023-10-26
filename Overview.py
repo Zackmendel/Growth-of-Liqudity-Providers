@@ -170,3 +170,7 @@ This dashboard is not just an analysis; it's a testament to the power of data, a
 
 - Continue with us as we dig deeper into the analysis by delving into the Liquidity providers activities on Ethereum (more emphasis here) and on Ethereum vs other L2s. To the next tab ➡️
   """)
+
+  cola, colb, colc, = st.columns([2,1,2])
+  with colb:
+    st.image("https://pbs.twimg.com/profile_images/1658503811189850112/yQRHOhdB_400x400.jpg", "Data By: Flipside Crypto", width=200,)
