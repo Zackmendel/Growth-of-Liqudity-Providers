@@ -292,115 +292,115 @@ We are hoping that at the end of this analysis more insights into the behavior o
   fig_10.update_layout(hovermode="x unified")
   st.plotly_chart(fig_10, use_container_width=True)
 
-st.markdown("""
-:blue[By their active months] measures the difference between LP's last liquidity provided and current date.
+  st.markdown("""
+  :blue[By their active months] measures the difference between LP's last liquidity provided and current date.
+  
+  A noticed trend is that inactivity increases with time with most LPs inactive for more than two years now.
+  """)
+  
+  
+  st.subheader("Liquidity Providers Distribution Based on UNI Token Holding & Governance")
+  
+  col_12, col_12a, = st.columns(2, gap="large")
+  url_12 = "https://api.flipsidecrypto.com/api/v2/queries/2dd945e1-a063-4990-b55f-be34c99586d3/data/latest"
+  df_12 = pd.read_json(url_12)
+  
+  url_12a = "https://api.flipsidecrypto.com/api/v2/queries/c0c16d0a-5acc-4155-9031-94f5592241e0/data/latest"
+  df_12a = pd.read_json(url_12a)
+  
+  with col_12:
+    fig_12 = px.bar(df_12, x="LP_DISTRIBUTION", y="LP_COUNT", color="LP_DISTRIBUTION", title="LP Distribution Based on UNI Token Holding", height=500)
+    fig_12.update_layout(hovermode="x unified")
+    st.plotly_chart(fig_12, use_container_width=True)
+  
+  with col_12a:
+    fig_12a = px.bar(df_12a, x="LP_DISTRIBUTION", y="LP_COUNT", color="LP_DISTRIBUTION", title="Governance Participation of LPs on Uniswap", height=500)
+    fig_12a.update_layout(hovermode="x unified")
+    st.plotly_chart(fig_12a, use_container_width=True)
+  
+  st.markdown(":blue[This section tracks the interest of LPs in Uniswap governance process] and is it can be clearly deduced by the small number of LPs that does not hold the Uniswap native UNI token and the number of LPs that have not participated actively in Uniswap governance that LPs a rarely interested in the governance of Uniswap.")
+  
+  
+  
+  st.subheader("Pool Distribution of Uniswap on Ethereum by Pool Balance")
+  
+  col_11, col_11a, = st.columns(2, gap="large")
+  url_11 = "https://api.flipsidecrypto.com/api/v2/queries/4c46147f-2329-48ed-8452-0817d45f3d4a/data/latest"
+  df_11 = pd.read_json(url_11)
+  
+  url_11a = "https://api.flipsidecrypto.com/api/v2/queries/fc66ddc9-2390-4898-ae6e-08678864e6f0/data/latest"
+  df_11a = pd.read_json(url_11a)
+  
+  with col_11:
+    fig_11 = px.pie(df_11, names="POOL_DISTRIBUTION", values="POOL_COUNT", color="POOL_DISTRIBUTION", title="Pool Distribution of Uniswap on Ethereum by Pool Balance", height=500)
+    fig_11.update_layout(hovermode="x unified")
+    fig_11.update_traces(textposition='inside', textinfo='percent+label')
+    st.plotly_chart(fig_11, use_container_width=True)
+  
+  with col_11a:
+    fig_11a = px.pie(df_11a, names="POOL_DISTRIBUTION", values="LP_COUNT", labels="POOL_DISTRIBUTION", title="User Count of Pool Distribution by Pool Balance", height=500)
+    fig_11a.update_layout(hovermode="x unified")
+    fig_11a.update_traces(textposition='inside', textinfo='percent+label')
+    st.plotly_chart(fig_11a, use_container_width=True)
+  
+  st.markdown("""
+  - By pool balance, Liquidity pools with balance >=1000000 is considered large, balance < 1000000 and > 100000 is considered medium and balance < 100000 are considered small pools.
+  
+  - A very large number of pools fell in the Medium size category, followed by Small size pools and with a very minute 3.3% falling into the Large pools category.
+  
+  - Interestingly, there were a lot of LPs concentrated in the large pools(44.2%) and a very small amount of LPs(6.7%) in the small pool and as usual the Medium pool still has a higher number of LPs.
+  """)
+  
+  col0, col1, col3 = st.columns([1,2,1])
+  with col1:
+    st.header("5. Heatmap of Uniswap LPs Actions.")
+  
+  url_00 = "https://api.flipsidecrypto.com/api/v2/queries/bb749b5e-d4f0-43bc-a53e-3e8c5efd58c3/data/latest"
+  df_00 = pd.read_json(url_00)
+  
+  fig_00 = px.scatter(df_00, x="MONTHS", y="DAYS", color="DAYS",
+     size='LP_ADDING', hover_data=['LP_ADDING'], title="Monthly Liquidity Provider(LP) Actions Heatmap", height=500)
+  st.plotly_chart(fig_00, use_container_width=True)
+  
+  
+  
+  col_13, col_13a, = st.columns(2, gap="large")
+  url_13 = "https://api.flipsidecrypto.com/api/v2/queries/bb749b5e-d4f0-43bc-a53e-3e8c5efd58c3/data/latest"
+  df_13 = pd.read_json(url_13)
+  
+  with col_13:
+    fig_13 = px.histogram(df_13, x="HOURS", y=["MINT_TX", "LP_ADDING"], barmode='group', title="Active Hours of LPs on Uniswap", height=500)
+    fig_13.update_layout(hovermode="x unified")
+    st.plotly_chart(fig_13, use_container_width=True)
+  
+  with col_13a:
+    fig_13a = px.histogram(df_13, x="DAYS", y=["MINT_TX", "LP_ADDING"], barmode='group', title="Active days of LPs on Uniswap", height=500)
+    fig_13a.update_layout(hovermode="x unified")
+    st.plotly_chart(fig_13a, use_container_width=True)
+  
+  st.markdown("""
+  - September can be seen to ve the most active month all time for Liquidity providers of Uniswap on Ethereum. Tuesday - Thursday are also seen to be the most active days in that month of September.
+  
+  - Liquidity providers are more active during the late hours and very early hours of the day 
+  """)
 
-A noticed trend is that inactivity increases with time with most LPs inactive for more than two years now.
-""")
+  # with col_10:
+  #   fig_1a = px.bar(df_1, x="BLOCKCHAIN", y="SWAP_COUNT", color="BLOCKCHAIN", title="Uniswap Swap Count", height=400)
+  #   fig_1a.update_layout(hovermode="x unified")
+  #   st.plotly_chart(fig_1a, use_container_width=True)
 
+  #   fig_2a = px.bar(df_2, x="TIMESPAN", y="SWAP_COUNT", color="BLOCKCHAIN", title="Uniswap Monthly Swap Count", height=400)
+  #   fig_2a.update_layout(hovermode="x unified")
+  #   st.plotly_chart(fig_2a, use_container_width=True)
 
-st.subheader("Liquidity Providers Distribution Based on UNI Token Holding & Governance")
+  # with col_3:
+  #   fig_1b = px.bar(df_1, x="BLOCKCHAIN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Swappers Count", height=400)
+  #   fig_1b.update_layout(hovermode="x unified")
+  #   st.plotly_chart(fig_1b, use_container_width=True)
 
-col_12, col_12a, = st.columns(2, gap="large")
-url_12 = "https://api.flipsidecrypto.com/api/v2/queries/2dd945e1-a063-4990-b55f-be34c99586d3/data/latest"
-df_12 = pd.read_json(url_12)
-
-url_12a = "https://api.flipsidecrypto.com/api/v2/queries/c0c16d0a-5acc-4155-9031-94f5592241e0/data/latest"
-df_12a = pd.read_json(url_12a)
-
-with col_12:
-  fig_12 = px.bar(df_12, x="LP_DISTRIBUTION", y="LP_COUNT", color="LP_DISTRIBUTION", title="LP Distribution Based on UNI Token Holding", height=500)
-  fig_12.update_layout(hovermode="x unified")
-  st.plotly_chart(fig_12, use_container_width=True)
-
-with col_12a:
-  fig_12a = px.bar(df_12a, x="LP_DISTRIBUTION", y="LP_COUNT", color="LP_DISTRIBUTION", title="Governance Participation of LPs on Uniswap", height=500)
-  fig_12a.update_layout(hovermode="x unified")
-  st.plotly_chart(fig_12a, use_container_width=True)
-
-st.markdown(":blue[This section tracks the interest of LPs in Uniswap governance process] and is it can be clearly deduced by the small number of LPs that does not hold the Uniswap native UNI token and the number of LPs that have not participated actively in Uniswap governance that LPs a rarely interested in the governance of Uniswap.")
-
-
-
-st.subheader("Pool Distribution of Uniswap on Ethereum by Pool Balance")
-
-col_11, col_11a, = st.columns(2, gap="large")
-url_11 = "https://api.flipsidecrypto.com/api/v2/queries/4c46147f-2329-48ed-8452-0817d45f3d4a/data/latest"
-df_11 = pd.read_json(url_11)
-
-url_11a = "https://api.flipsidecrypto.com/api/v2/queries/fc66ddc9-2390-4898-ae6e-08678864e6f0/data/latest"
-df_11a = pd.read_json(url_11a)
-
-with col_11:
-  fig_11 = px.pie(df_11, names="POOL_DISTRIBUTION", values="POOL_COUNT", color="POOL_DISTRIBUTION", title="Pool Distribution of Uniswap on Ethereum by Pool Balance", height=500)
-  fig_11.update_layout(hovermode="x unified")
-  fig_11.update_traces(textposition='inside', textinfo='percent+label')
-  st.plotly_chart(fig_11, use_container_width=True)
-
-with col_11a:
-  fig_11a = px.pie(df_11a, names="POOL_DISTRIBUTION", values="LP_COUNT", labels="POOL_DISTRIBUTION", title="User Count of Pool Distribution by Pool Balance", height=500)
-  fig_11a.update_layout(hovermode="x unified")
-  fig_11a.update_traces(textposition='inside', textinfo='percent+label')
-  st.plotly_chart(fig_11a, use_container_width=True)
-
-st.markdown("""
-- By pool balance, Liquidity pools with balance >=1000000 is considered large, balance < 1000000 and > 100000 is considered medium and balance < 100000 are considered small pools.
-
-- A very large number of pools fell in the Medium size category, followed by Small size pools and with a very minute 3.3% falling into the Large pools category.
-
-- Interestingly, there were a lot of LPs concentrated in the large pools(44.2%) and a very small amount of LPs(6.7%) in the small pool and as usual the Medium pool still has a higher number of LPs.
-""")
-
-col0, col1, col3 = st.columns([1,2,1])
-with col1:
-  st.header("5. Heatmap of Uniswap LPs Actions.")
-
-url_00 = "https://api.flipsidecrypto.com/api/v2/queries/bb749b5e-d4f0-43bc-a53e-3e8c5efd58c3/data/latest"
-df_00 = pd.read_json(url_00)
-
-fig_00 = px.scatter(df_00, x="MONTHS", y="DAYS", color="DAYS",
-   size='LP_ADDING', hover_data=['LP_ADDING'], title="Monthly Liquidity Provider(LP) Actions Heatmap", height=500)
-st.plotly_chart(fig_00, use_container_width=True)
-
-
-
-col_13, col_13a, = st.columns(2, gap="large")
-url_13 = "https://api.flipsidecrypto.com/api/v2/queries/bb749b5e-d4f0-43bc-a53e-3e8c5efd58c3/data/latest"
-df_13 = pd.read_json(url_13)
-
-with col_13:
-  fig_13 = px.histogram(df_13, x="HOURS", y=["MINT_TX", "LP_ADDING"], barmode='group', title="Active Hours of LPs on Uniswap", height=500)
-  fig_13.update_layout(hovermode="x unified")
-  st.plotly_chart(fig_13, use_container_width=True)
-
-with col_13a:
-  fig_13a = px.histogram(df_13, x="DAYS", y=["MINT_TX", "LP_ADDING"], barmode='group', title="Active days of LPs on Uniswap", height=500)
-  fig_13a.update_layout(hovermode="x unified")
-  st.plotly_chart(fig_13a, use_container_width=True)
-
-st.markdown("""
-- September can be seen to ve the most active month all time for Liquidity providers of Uniswap on Ethereum. Tuesday - Thursday are also seen to be the most active days in that month of September.
-
-- Liquidity providers are more active during the late hours and very early hours of the day 
-""")
-
-  with col_10:
-    fig_1a = px.bar(df_1, x="BLOCKCHAIN", y="SWAP_COUNT", color="BLOCKCHAIN", title="Uniswap Swap Count", height=400)
-    fig_1a.update_layout(hovermode="x unified")
-    st.plotly_chart(fig_1a, use_container_width=True)
-
-    fig_2a = px.bar(df_2, x="TIMESPAN", y="SWAP_COUNT", color="BLOCKCHAIN", title="Uniswap Monthly Swap Count", height=400)
-    fig_2a.update_layout(hovermode="x unified")
-    st.plotly_chart(fig_2a, use_container_width=True)
-
-  with col_3:
-    fig_1b = px.bar(df_1, x="BLOCKCHAIN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Swappers Count", height=400)
-    fig_1b.update_layout(hovermode="x unified")
-    st.plotly_chart(fig_1b, use_container_width=True)
-
-    fig_2b = px.bar(df_2, x="TIMESPAN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Monthly Swappers Count", height=400)
-    fig_2b.update_layout(hovermode="x unified")
-    st.plotly_chart(fig_2b, use_container_width=True)
+  #   fig_2b = px.bar(df_2, x="TIMESPAN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Monthly Swappers Count", height=400)
+  #   fig_2b.update_layout(hovermode="x unified")
+  #   st.plotly_chart(fig_2b, use_container_width=True)
 
   # with tab2:
   #   st.header("Past Month Trading Stats on Uniswap")
@@ -450,3 +450,7 @@ st.markdown("""
   #     fig_2b = px.bar(df_2, x="TIMESPAN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Daily Swappers Count(Past Month)", height=400)
   #     fig_2b.update_layout(hovermode="x unified")
   #     st.plotly_chart(fig_2b, use_container_width=True)
+
+  cola, colb, colc, = st.columns([2,1,2])
+  with colb:
+    st.image("https://pbs.twimg.com/profile_images/1658503811189850112/yQRHOhdB_400x400.jpg", "Data By: Flipside Crypto", width=200,)
