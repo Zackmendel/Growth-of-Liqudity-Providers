@@ -384,23 +384,23 @@ st.markdown("""
 - Liquidity providers are more active during the late hours and very early hours of the day 
 """)
 
-    # with col_10:
-    #   fig_1a = px.bar(df_1, x="BLOCKCHAIN", y="SWAP_COUNT", color="BLOCKCHAIN", title="Uniswap Swap Count", height=400)
-    #   fig_1a.update_layout(hovermode="x unified")
-    #   st.plotly_chart(fig_1a, use_container_width=True)
+  with col_10:
+    fig_1a = px.bar(df_1, x="BLOCKCHAIN", y="SWAP_COUNT", color="BLOCKCHAIN", title="Uniswap Swap Count", height=400)
+    fig_1a.update_layout(hovermode="x unified")
+    st.plotly_chart(fig_1a, use_container_width=True)
 
-    #   fig_2a = px.bar(df_2, x="TIMESPAN", y="SWAP_COUNT", color="BLOCKCHAIN", title="Uniswap Monthly Swap Count", height=400)
-    #   fig_2a.update_layout(hovermode="x unified")
-    #   st.plotly_chart(fig_2a, use_container_width=True)
+    fig_2a = px.bar(df_2, x="TIMESPAN", y="SWAP_COUNT", color="BLOCKCHAIN", title="Uniswap Monthly Swap Count", height=400)
+    fig_2a.update_layout(hovermode="x unified")
+    st.plotly_chart(fig_2a, use_container_width=True)
 
-    # with col_3:
-    #   fig_1b = px.bar(df_1, x="BLOCKCHAIN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Swappers Count", height=400)
-    #   fig_1b.update_layout(hovermode="x unified")
-    #   st.plotly_chart(fig_1b, use_container_width=True)
+  with col_3:
+    fig_1b = px.bar(df_1, x="BLOCKCHAIN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Swappers Count", height=400)
+    fig_1b.update_layout(hovermode="x unified")
+    st.plotly_chart(fig_1b, use_container_width=True)
 
-    #   fig_2b = px.bar(df_2, x="TIMESPAN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Monthly Swappers Count", height=400)
-    #   fig_2b.update_layout(hovermode="x unified")
-    #   st.plotly_chart(fig_2b, use_container_width=True)
+    fig_2b = px.bar(df_2, x="TIMESPAN", y="USERS_COUNT", color="BLOCKCHAIN", title="Uniswap Monthly Swappers Count", height=400)
+    fig_2b.update_layout(hovermode="x unified")
+    st.plotly_chart(fig_2b, use_container_width=True)
 
   # with tab2:
   #   st.header("Past Month Trading Stats on Uniswap")
