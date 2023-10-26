@@ -17,8 +17,8 @@ st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_ht
 
 
 with st.sidebar:
-    tabs = on_hover_tabs(tabName=['Overview', 'Ethereum LPs', 'Ethereum 🆚 L2s'], 
-                         iconName=['dashboard', 'money', 'economy'], default_choice=0)
+    tabs = on_hover_tabs(tabName=['Overview', 'Ethereum LPs', 'Ethereum 🆚 L2s', 'Conclusion'], 
+                         iconName=['🏠', '🔶', '🆚','✌'], default_choice=0)
 
 if tabs =='Overview':
   from Overview import test
@@ -30,5 +30,9 @@ elif tabs == 'Ethereum LPs':
 
 elif tabs == 'Ethereum 🆚 L2s':
   from Ethereum_vs_L2s import test
+  test()
+
+elif tabs == 'Conclusion':
+  from Conclusion import test
   test()
     
